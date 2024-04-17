@@ -1,0 +1,12 @@
+.imageContainer {
+    width: 360px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 250ms linear;
+  }
+  .imageContainer:hover {
+    transform: scale(1.03);
+  }
