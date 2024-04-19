@@ -1,5 +1,6 @@
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
+
 const ImageGallery = ({ images, onToggle }) => {
   return (
     <ul className={css.gallery}>

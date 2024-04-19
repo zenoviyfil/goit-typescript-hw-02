@@ -14,9 +14,6 @@ const ImageModal = ({
   modalState,
   modalOnClose,
   image
-  // likes,
-  // urls,
-  // description,
 }: Props ) => {
   return (
     <ReactModal
