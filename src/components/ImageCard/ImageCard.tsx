@@ -20,7 +20,7 @@ const ImageCard = ({
 }: Props) => {
   const imageInfo = {
     likes: likes,
-    modal: urls.regular,
+    urls: urls.regular,
     description: description,
   };
   return (
