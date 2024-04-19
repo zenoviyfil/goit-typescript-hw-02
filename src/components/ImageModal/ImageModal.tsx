@@ -3,13 +3,24 @@ import ReactModal from "react-modal";
 
 ReactModal.setAppElement("#root");
 
+type Props = {
+  modalState: boolean
+  modalOnClose: () => void
+  likes: number
+  urls: {
+    regular: string
+    small: string
+  }
+  description: string
+}
+
 const ImageModal = ({
   modalState,
   modalOnClose,
   likes,
-  modal,
+  urls,
   description,
-}) => {
+}: Props ) => {
   return (
     <ReactModal
       isOpen={modalState}
@@ -18,7 +29,7 @@ const ImageModal = ({
       overlayClassName={css.Overlay}
     >
       <div className={css.imgContainer}>
-        <img className={css.imgModal} src={modal} alt={description} />
+        <img className={css.imgModal} src={urls.regular} alt={description} />
         <div className={css.imgInfo}>
           <div className={css.imgInfoDown}>
             <p>{description}</p>
