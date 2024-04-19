@@ -1,7 +1,12 @@
-import ImageCard from "../ImageCard/ImageCard";
+import ImageCard, { Image } from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
 
-const ImageGallery = ({ images, onToggle }) => {
+type Props = {
+  images: Image[]
+  onToggle: () => void
+}
+
+const ImageGallery = ({ images, onToggle }: Props) => {
   return (
     <ul className={css.gallery}>
       {images.map((image) => {
