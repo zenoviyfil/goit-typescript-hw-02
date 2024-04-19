@@ -1,25 +1,22 @@
 import css from "./ImageModal.module.css";
 import ReactModal from "react-modal";
+import { Image } from "../ImageCard/ImageCard";
 
 ReactModal.setAppElement("#root");
 
 type Props = {
   modalState: boolean
   modalOnClose: () => void
-  likes: number
-  urls: {
-    regular: string
-    small: string
-  }
-  description: string
+  image: Image
 }
 
 const ImageModal = ({
   modalState,
   modalOnClose,
-  likes,
-  urls,
-  description,
+  image
+  // likes,
+  // urls,
+  // description,
 }: Props ) => {
   return (
     <ReactModal
@@ -29,11 +26,11 @@ const ImageModal = ({
       overlayClassName={css.Overlay}
     >
       <div className={css.imgContainer}>
-        <img className={css.imgModal} src={urls.regular} alt={description} />
+        <img className={css.imgModal} src={image.urls.regular} alt={image.description} />
         <div className={css.imgInfo}>
           <div className={css.imgInfoDown}>
-            <p>{description}</p>
-            <p>Likes: {likes}</p>
+            <p>{image.description}</p>
+            <p>Likes: {image.likes}</p>
           </div>
         </div>
       </div>

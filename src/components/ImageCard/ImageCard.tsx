@@ -1,6 +1,6 @@
 import css from "./ImageCard.module.css";
 
-type Image = {
+export type Image = {
   urls: {
     regular: string
     small: string
