@@ -3,7 +3,7 @@ import css from "./ImageGallery.module.css";
 
 type Props = {
   images: Image[]
-  onToggle: () => void
+  onToggle: (image: Image) => void
 }
 
 const ImageGallery = ({ images, onToggle }: Props) => {

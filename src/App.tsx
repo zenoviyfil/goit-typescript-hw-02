@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { fetchPhoto } from "./apiservice/api";
 import { toast, Toaster } from "react-hot-toast";
 import { useToggle } from "./hooks/useToggle";
-import { Image, Props } from "./components/ImageCard/ImageCard"
+import { Image } from "./components/ImageCard/ImageCard"
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
@@ -16,7 +16,7 @@ import ImageModal from "./components/ImageModal/ImageModal";
 
 function App() {
   const [images, setImages] = useState<Image[]>([]);
-  const [info, setInfo] = useState<Image | {}>({});
+  const [info, setInfo] = useState<Image | null>(null);
   const [searchPhoto, setSearchPhoto] = useState<string>("");
   const [loadMoreBtn, setLoadMoreBtn] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -86,11 +86,11 @@ function App() {
       {loading && <Loader />}
       {error && <ErrorMessage message={error} />}
       {loadMoreBtn && <LoadMoreBtn onLoadMore={handlePagination} />}
-      <ImageModal
+      {info && <ImageModal
         modalState={isOpen}
         modalOnClose={close}
-        {...info}
-      />
+        image = {info}
+      />}
       <Toaster position="bottom-right" reverseOrder={false}/>
     </>
   );
