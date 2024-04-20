@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
 import "./App.css";
 
 import { useState, useEffect } from "react";
 import { fetchPhoto } from "./apiservice/api";
 import { toast, Toaster } from "react-hot-toast";
 import { useToggle } from "./hooks/useToggle";
+import { Image, Props } from "./components/ImageCard/ImageCard"
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
@@ -13,15 +15,15 @@ import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import ImageModal from "./components/ImageModal/ImageModal";
 
 function App() {
-  const [images, setImages] = useState([]);
-  const [info, setInfo] = useState({});
-  const [searchPhoto, setSearchPhoto] = useState("");
-  const [loadMoreBtn, setLoadMoreBtn] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [images, setImages] = useState<Image[]>([]);
+  const [info, setInfo] = useState<Image | {}>({});
+  const [searchPhoto, setSearchPhoto] = useState<string>("");
+  const [loadMoreBtn, setLoadMoreBtn] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | boolean>(false);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const per_page = 12;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const per_page: number = 12;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +48,7 @@ function App() {
             setLoadMoreBtn(false)
           }
         }
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);
@@ -55,7 +57,7 @@ function App() {
     if (searchPhoto !== "") fetchData();
   }, [currentPage, searchPhoto]);
 
-  const handleSearch = (photo) => {
+  const handleSearch = (photo: string) => {
     if (photo !== "" && photo !== searchPhoto) {
       setSearchPhoto(photo);
       setCurrentPage(1);
@@ -68,7 +70,7 @@ function App() {
 
   const { isOpen, open, close } = useToggle();
 
-  const handleToggle = (image) => {
+  const handleToggle = (image: Image) => {
     setInfo(image);
     open();
   };

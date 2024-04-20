@@ -1,11 +1,16 @@
+import React from "react";
 import { toast, Toaster } from "react-hot-toast";
 import css from "./SearchBar.module.css";
 
-const SearchBar = ({ onSearch }) => {
-  const handleSubmit = (e) => {
+interface SearchBarProps {
+  onSearch: (photo: string) => void
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const form = e.target;
-    const photo = form.elements.photo.value;
+    const form = e.currentTarget;
+    const photo = (form.elements.namedItem("photo") as HTMLInputElement).value;
 
     if (photo.trim() === "") {
         toast.error("Search input is empty!");

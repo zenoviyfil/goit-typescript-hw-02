@@ -10,7 +10,7 @@ export type Image = {
   description: string
 }
 
-type Props = {
+export type Props = {
   image: Image
   onToggle: (image: Image) => void
 }

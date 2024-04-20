@@ -1,7 +1,7 @@
 import css from "./ErrorMessage.module.css";
 
 type Props = {
-  message: string
+  message: string | boolean
 }
 
 const ErrorMessage = ({ message }:Props) => {
